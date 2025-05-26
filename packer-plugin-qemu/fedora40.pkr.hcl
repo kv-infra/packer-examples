@@ -16,7 +16,7 @@ source "qemu" "fedora40" {
   boot_command = [
     "<up>e",
     "<down><down><end>",
-    "inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kickstarts/fedora40-kickstart.cfg",
+    " inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kickstarts/fedora40-kickstart.cfg",
     "<leftCtrlOn>x<leftCtrlOff>"
   ]
   boot_wait    = "10s"
