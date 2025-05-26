@@ -15,8 +15,8 @@ source "qemu" "win11" {
 
   # Boot Configuration & Setup Files
   floppy_files = [
-    "./unattends/win11-unattend.xml",
-    "./unattends/win11-firstboot-unattend.xml",
+    "./unattends/Autounattend.xml",
+    "./unattends/Firstboot-Autounattend.xml",
     "./win11/scripts/bootstrap.bat",
     "./win11/scripts/set-network.ps1",
     "./win11/scripts/install-misc.bat",
@@ -67,5 +67,9 @@ build {
     execute_command = "{{ .Vars }} cmd /c C:/Windows/Temp/script.bat"
     remote_path     = "c:/Windows/Temp/script.bat"
     scripts         = ["./win11/scripts/install-misc.bat"]
+  }
+
+  provisioner "windows-restart" {
+    restart_check_command = "powershell -command \"& {Write-Output 'restarted.'}\""
   }
 }

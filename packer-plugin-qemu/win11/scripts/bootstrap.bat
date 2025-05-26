@@ -5,7 +5,7 @@ REM Set high performance mode
 powercfg /SETACTIVE 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 
 REM Copy our sysprep Autounattend for our post-packer first boot
-copy "A:/win11-firstboot-unattend.xml" "C:/Windows/Temp/Autounattend.xml"
+copy "A:/Firstboot-Autounattend.xml" "C:/Windows/Temp/Autounattend.xml"
 REM Copy the enable-winrm script, relied on by our post-packer autounattend script
 copy "A:/enable-winrm.ps1" "C:/Windows/Temp/enable-winrm.ps1"
 
