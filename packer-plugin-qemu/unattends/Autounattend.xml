@@ -20,20 +20,52 @@
       <DiskConfiguration>
         <Disk wcm:action="add">
           <CreatePartitions>
-            <CreatePartition wcm:action="add">
-              <Order>1</Order>
-              <Type>Primary</Type>
-              <Extend>true</Extend>
-            </CreatePartition>
+              <CreatePartition wcm:action="add">
+                  <Order>1</Order>
+                  <Type>Primary</Type>
+                  <Size>700</Size>
+              </CreatePartition>
+              <CreatePartition wcm:action="add">
+                  <Order>2</Order>
+                  <Type>EFI</Type>
+                  <Size>100</Size>
+              </CreatePartition>
+              <CreatePartition wcm:action="add">
+                  <Order>3</Order>
+                  <Type>MSR</Type>
+                  <Size>128</Size>
+              </CreatePartition>
+              <CreatePartition wcm:action="add">
+                  <Order>4</Order>
+                  <Type>Primary</Type>
+                  <Extend>true</Extend>
+              </CreatePartition>
           </CreatePartitions>
           <ModifyPartitions>
             <ModifyPartition wcm:action="add">
-              <Extend>false</Extend>
-              <Format>NTFS</Format>
-              <Letter>C</Letter>
-              <Order>1</Order>
-              <PartitionID>1</PartitionID>
-              <Label>System</Label>
+                <Order>1</Order>
+                <PartitionID>1</PartitionID>
+                <Label>WINRE</Label>
+                <Format>NTFS</Format>
+                <!-- https://learn.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-setup-diskconfiguration-disk-modifypartitions-modifypartition-typeid -->
+                <TypeID>DE94BBA4-06D1-4D40-A16A-BFD50179D6AC</TypeID>
+            </ModifyPartition>
+            <ModifyPartition wcm:action="add">
+                <Order>2</Order>
+                <PartitionID>2</PartitionID>
+                <Label>EFI</Label>
+                <Format>FAT32</Format>
+            </ModifyPartition>
+            <ModifyPartition wcm:action="add">
+                <Order>3</Order>
+                <PartitionID>3</PartitionID>
+            </ModifyPartition>
+            <ModifyPartition wcm:action="add">
+                <Order>4</Order>
+                <PartitionID>4</PartitionID>
+                <Label>Windows</Label>
+                <Letter>C</Letter>
+                <Format>NTFS</Format>
             </ModifyPartition>
           </ModifyPartitions>
           <DiskID>0</DiskID>
@@ -56,7 +88,7 @@
         <OSImage>
           <InstallTo>
             <DiskID>0</DiskID>
-            <PartitionID>1</PartitionID>
+            <PartitionID>4</PartitionID>
           </InstallTo>
           <WillShowUI>OnError</WillShowUI>
           <InstallToAvailablePartition>false</InstallToAvailablePartition>

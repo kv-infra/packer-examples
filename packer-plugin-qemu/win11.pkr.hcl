@@ -23,7 +23,8 @@ source "qemu" "win11" {
     "./win11/scripts/enable-winrm.ps1",
     "./win11/drivers/"
   ]
-  boot_wait    = "20s"
+  boot_wait    = "5s"
+  boot_command = ["<spacebar><wait>"]
 
   # Communicator Details (WinRM)
   communicator     = "winrm"
@@ -52,6 +53,7 @@ source "qemu" "win11" {
   accelerator      = "kvm"
   headless         = "false"
   vga              = "qxl"
+  efi_boot         = "true"
 
   # Artifacts Output
   output_directory = "output-win11"
