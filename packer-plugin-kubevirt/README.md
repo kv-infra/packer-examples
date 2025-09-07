@@ -25,4 +25,4 @@ packer validate ${TEMPLATE}
 packer build ${TEMPLATE}
 ```
 
-The new VM image will be available in the KubeVirt cluster.
+The VM image will be available in the Kubernetes cluster.
